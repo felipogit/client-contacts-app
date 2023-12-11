@@ -5,7 +5,7 @@ import { StyledContainer } from "./styled";
 interface CardProps {
     contact: Contact;
 }
-const Card: React.FC<CardProps> = ({ contact }) => {
+const Card: React.FC<CardProps & { onEdit: () => void } > = ({ contact, onEdit }) => {
     return (
         <StyledContainer>
             <h3> Nome: {contact.name}</h3>
@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ contact }) => {
             <p>Criado em: {contact.registrationDate}</p>
 
             <div>
-                <button>Editar</button>
+                <button onClick={onEdit} >Editar</button>
             </div>
         </StyledContainer>
     );

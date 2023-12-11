@@ -16,6 +16,7 @@ export interface Contact {
 export const Dashboard = () => {
     const [contacts, setContacts] = useState<Contact[]>([])
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
     useEffect(() => {
         (
@@ -29,6 +30,11 @@ export const Dashboard = () => {
 
     const toggleModal = () => setIsOpenModal(!isOpenModal)
 
+    const onEditClick = (contact: Contact) => {
+        setSelectedContact(contact);
+        toggleModal();
+    };
+
     return (
         <StyledContainer>
             <header>
@@ -37,11 +43,14 @@ export const Dashboard = () => {
             </header>
 
             {
-                isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts}/>
+                isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts} />
             }
 
+            
+
+
             <ul>
-            {contacts.map((contact) => (<Card key={contact.id} contact={contact} />))}
+                {contacts.map((contact) => (<Card key={contact.id} contact={contact} onEdit={() => onEditClick(contact)} />))}
             </ul>
         </StyledContainer >
     )

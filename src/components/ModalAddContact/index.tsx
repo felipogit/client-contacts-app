@@ -9,6 +9,7 @@ import { Modal } from "../Modal"
 interface ModalAddContactProps {
     toggleModal: () => void
     setContacts: React.Dispatch<SetStateAction<Contact[]>>
+    
 }
 
 export const ModalAddContact = ({ toggleModal, setContacts }: ModalAddContactProps) => {
