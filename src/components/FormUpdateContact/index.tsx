@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ContactData, contactSchema } from "./validator"
 import { api } from "../../services/api"
 import { ModalUpdate } from "../ModalUpdate"
+import { StyledForm } from "../ModalAddContact/styled"
 
 
 interface ModalEditContactProps {
@@ -32,7 +33,7 @@ export const FormEditContact = ({ openModal, setContacts, contact}: ModalEditCon
 
     return (
         <ModalUpdate openModal={openModal}>
-            <form onSubmit={handleSubmit(editContact)} >
+            <StyledForm onSubmit={handleSubmit(editContact)} >
                 <label htmlFor="name">Nome</label>
                 <input  type="text" id="name" {...register("name")} />
 
@@ -42,8 +43,8 @@ export const FormEditContact = ({ openModal, setContacts, contact}: ModalEditCon
                 <label htmlFor="phone">Celular</label>
                 <input type="text" id="phone" {...register("phone")} />
 
-                <button type="submit">Editar</button>
-            </form>
+                <button type="submit">Concluir</button>
+            </StyledForm>
         </ModalUpdate>
     )
 }

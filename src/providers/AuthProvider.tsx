@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { LoginData } from "../pages/login/validator";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface AuthProviderProps {
     children: ReactNode

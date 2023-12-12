@@ -25,10 +25,9 @@ const Card: React.FC<CardProps > = ({ contact, openModal, setSelectedContact, ha
 
             <div>
                 <button onClick={openModalUpdate} >Editar</button>
-            </div>
-            <div>
                 <button onClick={() => handleDeleteContact(String(contact.id))}>excluir</button>
             </div>
+            
 
             
         </StyledContainer>

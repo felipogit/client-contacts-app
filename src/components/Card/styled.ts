@@ -6,7 +6,21 @@ padding: 10px;
 flex-direction: column;
 width: 100%;
 height: auto;
-border: 1px solid blue;
+background-color: var(--color-blue-600);
+gap: 10px;
 
+
+div{
+    display: flex;
+    width: 100%;
+    
+    flex-direction: row-reverse;
+    gap: 10px;
+
+    button{
+        height: 30px;
+        width: 110px;
+    }
+}
 
 `

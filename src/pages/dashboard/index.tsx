@@ -5,6 +5,7 @@ import { ModalAddContact } from "../../components/ModalAddContact"
 import { StyledContainer } from "./styled"
 import { ModalUpdate } from "../../components/ModalUpdate"
 import { FormEditContact } from "../../components/FormUpdateContact"
+import { StyledContainerTop } from "../../styles/flex"
 
 export interface Contact {
     id: number
@@ -18,16 +19,16 @@ export interface Contact {
 export const Dashboard = () => {
     const [contacts, setContacts] = useState<Contact[]>([])
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const [ isOpenModalUpdate, setIsOpenModalUpdate] = useState(false)
+    const [isOpenModalUpdate, setIsOpenModalUpdate] = useState(false)
     const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-   
-    
+
+
     useEffect(() => {
         (
             async () => {
                 const response = await api.get<Contact[]>('/contacts')
                 setContacts(response.data)
-                
+
             }
         )()
     }, [])
@@ -39,28 +40,31 @@ export const Dashboard = () => {
         await api.delete(`/contacts/${id}`);
         setContacts((prevContacts) => prevContacts.filter((contact) => String(contact.id) !== id));
     };
-      
+
 
     return (
         <StyledContainer>
+
             <header>
-                <h1>Dashboard</h1>
+                <h1>Bem vindo</h1>
                 <button type="button" onClick={toggleModal}>Criar novo contato</button>
             </header>
 
-            {
-                isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts} />
-            }
+            <StyledContainerTop>
 
-            {
-                isOpenModalUpdate &&  <FormEditContact  contact={selectedContact} openModal={openModal} setContacts={setContacts} />
-            }
-            
+                {
+                    isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts} />
+                }
 
-            <ul>
-                {contacts.map((contact) => (<Card key={contact.id} contact={contact} openModal={openModal} handleDeleteContact={handleDeleteContact} setSelectedContact={setSelectedContact}  />))}
-            </ul>
+                {
+                    isOpenModalUpdate && <FormEditContact contact={selectedContact} openModal={openModal} setContacts={setContacts} />
+                }
 
+
+                <ul>
+                    {contacts.map((contact) => (<Card key={contact.id} contact={contact} openModal={openModal} handleDeleteContact={handleDeleteContact} setSelectedContact={setSelectedContact} />))}
+                </ul>
+            </StyledContainerTop>
         </StyledContainer >
     )
 }

@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ContactData, contactSchema } from "./validator"
 import { api } from "../../services/api"
 import { Modal } from "../Modal"
+import { StyledForm } from "./styled"
 
 interface ModalAddContactProps {
     toggleModal: () => void
@@ -25,7 +26,7 @@ export const ModalAddContact = ({ toggleModal, setContacts }: ModalAddContactPro
 
     return (
         <Modal toggleModal={toggleModal} >
-            <form onSubmit={handleSubmit(createContact)} >
+            <StyledForm onSubmit={handleSubmit(createContact)} >
                 <label htmlFor="name">Nome</label>
                 <input type="text" id="name" {...register("name")} />
 
@@ -36,7 +37,7 @@ export const ModalAddContact = ({ toggleModal, setContacts }: ModalAddContactPro
                 <input type="text" id="phone" {...register("phone")} />
 
                 <button type="submit">Cadastrar</button>
-            </form>
+            </StyledForm>
         </Modal>
     )
 }

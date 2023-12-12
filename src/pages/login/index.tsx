@@ -3,26 +3,28 @@ import { useForm } from "react-hook-form"
 import { LoginData, loginSchema } from "./validator"
 import { useContext } from "react"
 import { AuthContext } from "../../providers/AuthProvider"
+import { StyledTopContainer } from "./styled"
 
 
 export const Login = () => {
 
     const authContext = useContext(AuthContext)
-    
+
     const { register, handleSubmit } = useForm<LoginData>({
         resolver: zodResolver(loginSchema)
     })
 
     const submit = async (data: LoginData) => {
         await authContext.signIn(data);
-       
+
     }
 
     return (
-        <main>
-            <h2>Login</h2>
+        <StyledTopContainer>
 
             <form onSubmit={handleSubmit(submit)} >
+                <div><h2>Login</h2></div>
+
                 <label htmlFor="email">E-mail</label>
                 <input type="email" id="email" {...register("email")} />
 
@@ -31,6 +33,6 @@ export const Login = () => {
 
                 <button type="submit">Entrar</button>
             </form>
-        </main>
+        </StyledTopContainer>
     )
 }
