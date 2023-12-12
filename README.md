@@ -36,4 +36,4 @@ npm run dev
 
 Isso iniciará o servidor de desenvolvimento e abrirá o aplicativo no seu navegador padrão.
 
-Acesse http://localhost:3001 para visualizar o frontend.
+Acesse http://localhost:5173 para visualizar o frontend.
