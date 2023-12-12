@@ -15,9 +15,10 @@ git clone https://github.com/seu-usuario/projeto-tech-frontend.git
 cd client-contacts-app
 Instale as dependências utilizando o npm:
 npm install
-Configuração da API
 
-## A API deste projeto está em um arquivo separado chamado api.ts. Certifique-se de que as configurações da API estão corretas antes de iniciar o frontend.
+
+##Configuração da API
+A API deste projeto está em um arquivo separado chamado api.ts. Certifique-se de que as configurações da API estão corretas antes de iniciar o frontend.
 
 // src/services/api.js
 
