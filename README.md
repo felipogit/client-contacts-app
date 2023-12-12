@@ -17,7 +17,7 @@ Instale as dependências utilizando o npm:
 npm install
 
 
-##Configuração da API
+## Configuração da API
 A API deste projeto está em um arquivo separado chamado api.ts. Certifique-se de que as configurações da API estão corretas antes de iniciar o frontend.
 
 // src/services/api.js
