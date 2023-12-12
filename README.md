@@ -12,7 +12,7 @@ git clone https://github.com/seu-usuario/projeto-tech-frontend.git
 
 
 ## Navegue até o diretório do projeto:
-cd projeto-tech-frontend
+cd client-contacts-app
 Instale as dependências utilizando o npm:
 npm install
 Configuração da API
