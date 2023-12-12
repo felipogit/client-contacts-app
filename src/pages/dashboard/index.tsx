@@ -3,6 +3,8 @@ import { api } from "../../services/api"
 import Card from "../../components/Card"
 import { ModalAddContact } from "../../components/ModalAddContact"
 import { StyledContainer } from "./styled"
+import { ModalUpdate } from "../../components/ModalUpdate"
+import { FormEditContact } from "../../components/FormUpdateContact"
 
 export interface Contact {
     id: number
@@ -16,24 +18,28 @@ export interface Contact {
 export const Dashboard = () => {
     const [contacts, setContacts] = useState<Contact[]>([])
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [ isOpenModalUpdate, setIsOpenModalUpdate] = useState(false)
     const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-
+   
+    
     useEffect(() => {
         (
             async () => {
                 const response = await api.get<Contact[]>('/contacts')
                 setContacts(response.data)
-                console.log(response.data)
+                
             }
         )()
     }, [])
 
     const toggleModal = () => setIsOpenModal(!isOpenModal)
+    const openModal = () => setIsOpenModalUpdate(!isOpenModalUpdate)
 
-    const onEditClick = (contact: Contact) => {
-        setSelectedContact(contact);
-        toggleModal();
+    const handleDeleteContact = async (id: string) => {
+        await api.delete(`/contacts/${id}`);
+        setContacts((prevContacts) => prevContacts.filter((contact) => String(contact.id) !== id));
     };
+      
 
     return (
         <StyledContainer>
@@ -46,12 +52,15 @@ export const Dashboard = () => {
                 isOpenModal && <ModalAddContact toggleModal={toggleModal} setContacts={setContacts} />
             }
 
+            {
+                isOpenModalUpdate &&  <FormEditContact  contact={selectedContact} openModal={openModal} setContacts={setContacts} />
+            }
             
 
-
             <ul>
-                {contacts.map((contact) => (<Card key={contact.id} contact={contact} onEdit={() => onEditClick(contact)} />))}
+                {contacts.map((contact) => (<Card key={contact.id} contact={contact} openModal={openModal} handleDeleteContact={handleDeleteContact} setSelectedContact={setSelectedContact}  />))}
             </ul>
+
         </StyledContainer >
     )
 }

@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+Frontend do Projeto XYZ
+Bem-vindo ao frontend do Projeto Tech! Este repositório contém o código-fonte do frontend da aplicação, que interage com a API por meio do Axios. Siga as instruções abaixo para configurar e executar o frontend localmente.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pré-requisitos
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-Currently, two official plugins are available:
+Node.js (v14.0.0 ou superior)
+npm (v6.0.0 ou superior)
+Instalação
+Clone este repositório em sua máquina local:
+git clone https://github.com/seu-usuario/projeto-tech-frontend.git
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Navegue até o diretório do projeto:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+cd projeto-xyz-frontend
+Instale as dependências utilizando o npm:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+npm install
+Configuração da API
+A API deste projeto está em um arquivo separado chamado api.ts. Certifique-se de que as configurações da API estão corretas antes de iniciar o frontend.
+
+javascript
+
+// src/services/api.js
+
+import axios from "axios";
+
+export const api = axios.create({
+    baseURL: "http://localhost:3000",
+});
+
+Verifique se o baseURL está configurado corretamente com o endereço da sua API.
+
+Executando o Frontend
+Após a instalação das dependências e configuração da API, você pode iniciar o frontend localmente. Execute o seguinte comando:
+
+npm run dev
+
+Isso iniciará o servidor de desenvolvimento e abrirá o aplicativo no seu navegador padrão.
+
+Acesse http://localhost:3001 para visualizar o frontend.

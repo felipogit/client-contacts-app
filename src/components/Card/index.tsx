@@ -4,8 +4,18 @@ import { StyledContainer } from "./styled";
 
 interface CardProps {
     contact: Contact;
+    openModal: () => void
+    setSelectedContact: React.Dispatch<React.SetStateAction<Contact | null>>
+    handleDeleteContact: (id: string) => void
 }
-const Card: React.FC<CardProps & { onEdit: () => void } > = ({ contact, onEdit }) => {
+const Card: React.FC<CardProps > = ({ contact, openModal, setSelectedContact, handleDeleteContact }) => {
+    
+
+    const openModalUpdate = () => {
+        setSelectedContact(contact)
+        openModal()
+    }
+
     return (
         <StyledContainer>
             <h3> Nome: {contact.name}</h3>
@@ -14,8 +24,13 @@ const Card: React.FC<CardProps & { onEdit: () => void } > = ({ contact, onEdit }
             <p>Criado em: {contact.registrationDate}</p>
 
             <div>
-                <button onClick={onEdit} >Editar</button>
+                <button onClick={openModalUpdate} >Editar</button>
             </div>
+            <div>
+                <button onClick={() => handleDeleteContact(String(contact.id))}>excluir</button>
+            </div>
+
+            
         </StyledContainer>
     );
 };
