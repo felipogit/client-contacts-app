@@ -1,4 +1,4 @@
-Frontend do Projeto XYZ
+Frontend do Projeto Client-Contacts
 Bem-vindo ao frontend do Projeto Tech! Este repositório contém o código-fonte do frontend da aplicação, que interage com a API por meio do Axios. Siga as instruções abaixo para configurar e executar o frontend localmente.
 
 Pré-requisitos
@@ -14,15 +14,13 @@ git clone https://github.com/seu-usuario/projeto-tech-frontend.git
 Navegue até o diretório do projeto:
 
 
-cd projeto-xyz-frontend
+cd projeto-tech-frontend
 Instale as dependências utilizando o npm:
 
 
 npm install
 Configuração da API
 A API deste projeto está em um arquivo separado chamado api.ts. Certifique-se de que as configurações da API estão corretas antes de iniciar o frontend.
-
-javascript
 
 // src/services/api.js
 
